@@ -2,8 +2,8 @@ package com.cb.migrationtest
 
 import android.content.Context
 import androidx.room.Room
-import com.cb.cb_test.application.data.database.UserDatabase
-import com.cb.cb_test.application.data.database.UserDatabase.Companion.DATABASE_NAME
+import com.cb.migrationtest.UserDatabase.Companion.DATABASE_NAME
+import com.cb.migrationtest.UserRoomDatabase.Companion.MIGRATION_1_2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,13 +17,14 @@ class SenderModule {
 
 
     @Provides
-    fun providesDao(userDatabase: UserDatabase): UserDao =
+    fun providesDao(userDatabase: UserRoomDatabase): UserDao =
         userDatabase.userDao()
 
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext context: Context): UserDatabase =
-        Room.databaseBuilder(context, UserDatabase::class.java, DATABASE_NAME)
+    fun providesDatabase(@ApplicationContext context: Context): UserRoomDatabase =
+        Room.databaseBuilder(context, UserRoomDatabase::class.java, DATABASE_NAME)
+            .addMigrations(MIGRATION_1_2)
             .build()
 
 
