@@ -3,7 +3,6 @@ package com.cb.migrationtest
 import java.io.Serializable
 
 class UserEntity() : Serializable {
-
     var id = 0
     var firstName: String? = null
     var lastName: String? = null
@@ -12,7 +11,6 @@ class UserEntity() : Serializable {
         this.firstName = firstName
         this.lastName = lastName
     }
-
 
     override fun toString(): String {
         return "UserEntity(id=$id, firstName=$firstName, lastName=$lastName)"
