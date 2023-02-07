@@ -36,7 +36,6 @@ abstract class UserRoomDatabase : RoomDatabase() {
                 database.execSQL(indices)
                 database.execSQL(updateUserName)
                 database.execSQL(dropUser)
-
             }
         }
     }
